@@ -21,11 +21,12 @@ const app = express();
 app.use(express.json({ limit: "10mb" }));
 
 const cors = require("cors");
-app.use(
+/*app.use(
   cors({
     origin: ["http://127.0.0.1:5500", "http://localhost:5500", "https://orcamento-serralheria-front.vercel.app"],
   })
-);
+);*/
+app.use(cors());
 
 let sock;
 
