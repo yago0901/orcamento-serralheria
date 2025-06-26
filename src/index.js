@@ -1,5 +1,5 @@
 const express = require("express");
-const { default: makeWASocket, useMultiFileAuthState, DisconnectReason } = require("baileys");
+const { default: makeWASocket, useMultiFileAuthState, DisconnectReason } = require("@whiskeysockets/baileys");
 const P = require("pino");
 const QRCode = require("qrcode");
 const { Boom } = require("@hapi/boom");
@@ -15,7 +15,7 @@ const mime = require("mime-types");
 require('dotenv').config();
 const enviarEmailComPdf = require("./services/sendEmail");
 
-const deleteOldestPdf = require('./deleteOldestPdf');
+const deleteOldPdf = require('./services/deleteOldPdf');
 
 const app = express();
 app.use(express.json({ limit: "10mb" }));
@@ -125,7 +125,7 @@ app.post("/send-pdf", async (req, res) => {
     await enviarEmailComPdf(email, buffer, latestFileName);
 
     //Deletar o mais antigo    
-    deleteOldestPdf(folder);
+    deleteOldPdf(folder);
 
     res.json({ success: true, message: "PDF enviado com sucesso via WhatsApp" });
   } catch (err) {

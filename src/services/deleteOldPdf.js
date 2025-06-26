@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-function deleteOldestPdf(folder) {
+function deleteOldPdf(folder) {
   const files = fs.readdirSync(folder)
     .filter(f => f.endsWith('.pdf'))
     .map(f => ({
@@ -17,4 +17,4 @@ function deleteOldestPdf(folder) {
   }
 }
 
-module.exports = deleteOldestPdf;
+module.exports = deleteOldPdf;

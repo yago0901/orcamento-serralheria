@@ -36,7 +36,7 @@ function generatePdf(data, res) {
   }
 
   // Título
-  doc.moveDown(10);
+  doc.moveDown(6);
 
   // Dados da empresa
   doc.moveDown();
